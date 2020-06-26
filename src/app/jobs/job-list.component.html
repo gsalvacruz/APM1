@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header d-flex align-items-start">
+        <div *ngIf='isListVisible' class='col-3'><h5>Job List</h5></div>
+        <div *ngIf='isJobVisible' class='row col-12'><h5 class='col-3'>Job Description</h5><a class='col-3' href='#' (click)='toggleViews()'>back to list</a></div>
+    </div>
+    <div clas="card-body p-0">
+        <table class="table m-0" *ngIf='isListVisible'>
+            <thead>
+                <tr>
+                    <th>
+                        Facility
+                    </th>
+                    <th>
+                        Job Title
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of jbLst.jobs; let i=index;">
+                    <td>
+                       {{item.facility}}
+                    </td>
+                    <td>
+                        <a href='#' (click)='showJob(i)'>{{item.jobTitle}}</a> 
+                     </td>
+                 </tr>
+            </tbody>
+        </table>
+        <div class='container' *ngIf='isJobVisible'>
+            <div class="row col-12 pb-2 pt-2">
+                <div class='col-3'>Facility</div>
+                <div class='col-9'>{{ currentJob.facility }}</div>
+            </div>
+            <div class="row col-12 pb-2">
+                <div class='col-3'>Job Title</div>
+                <div class='col-6'>{{ currentJob.jobTitle }}</div>
+            </div>
+            <div class="row col-12 pb-2">
+                <div class='col-3'>Summary</div>
+                <div class='col-6'>{{ currentJob.summary }}</div>
+            </div>
+            <div class="row col-12 pb-2">
+                <div class='col-3'>Status</div>
+                <div class='col-6'>{{ currentJob.status }}</div>
+            </div>
+            <div class="row col-12 pb-2">
+                <div class='col-3'>Shift</div>
+                <div class='col-6'>{{ currentJob.shift }}</div>
+            </div>
+        </div>
+    </div>
+</div>
